@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduplex Dashboard</title>
+    <link rel="stylesheet" href="Port.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <div>
+        <div class="logo">CoursesZilla</div>
+        <ul class="nav">
+            <li class="active">🏠 Dashboard</li>
+            <li>📚 My Courses</li>
+            <li>📅 My Classes</li>
+            <li>💬 Messages</li>
+            <li>🔔 Notifications <span class="badge">2</span></li>
+            <li>📆 Calendars</li>
+            <li>👥 Community</li>
+            <li>⚙️ Settings</li>
+        </ul>
+    </div>
+    <div class="download-app">
+        📱 Download our mobile app
+    </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main">
+    <!-- Top bar -->
+    <div class="topbar">
+        <h2>Welcome back, Taylor 👋</h2>
+        <input type="text" placeholder="🔍 Search courses" class="search">
+    </div>
+
+    <!-- New Courses -->
+    <section class="new-courses">
+        <div class="course-card gradient-card">
+            <h4>Content Writing</h4>
+            <p>Type: Data Research</p>
+            <span class="rating">⭐ 4.8</span>
+        </div>
+        <div class="course-card gradient-card">
+            <h4>Usability Testing</h4>
+            <p>Type: UI/UX Design</p>
+            <span class="rating">⭐ 5.0</span>
+        </div>
+        <div class="course-card gradient-card">
+            <h4>Photography</h4>
+            <p>Type: Art & Design</p>
+            <span class="rating">⭐ 4.6</span>
+        </div>
+    </section>
+
+    <!-- Middle Section -->
+    <section class="grid">
+        <!-- Hours Activity -->
+        <div class="card">
+            <h4>📈 Hours Activity <span class="small">+3% from last week</span></h4>
+            <div class="bar-chart">
+                <div class="bar" style="height:80px"></div>
+                <div class="bar" style="height:120px"></div>
+                <div class="bar active" style="height:150px"></div>
+                <div class="bar" style="height:40px"></div>
+                <div class="bar" style="height:60px"></div>
+                <div class="bar" style="height:90px"></div>
+                <div class="bar" style="height:50px"></div>
+            </div>
+        </div>
+
+        <!-- Daily Schedule -->
+        <div class="card">
+            <h4>🗓️ Daily Schedule</h4>
+            <ul>
+                <li>📚 Design System – Lecture</li>
+                <li>✏️ Typography – Group Test</li>
+                <li>🎨 Color Style – Group Test</li>
+                <li>🖌️ Visual Design – Lecture</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Lower Section -->
+    <section class="bottom-grid">
+        <!-- Courses You're Taking -->
+        <div class="card">
+            <h4>📖 Courses You're Taking</h4>
+            <div class="course-item">
+                <span>3D Design Course</span>
+                <span class="progress">45%</span>
+            </div>
+            <div class="course-item">
+                <span>Development Basics</span>
+                <span class="progress">75%</span>
+            </div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="card calendar">
+            <h4>📅 August 2023</h4>
+            <div class="calendar-grid">
+                <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                <span class="faded">30</span><span class="faded">31</span>
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span class="highlight">11</span><span>12</span>
+                <span>13</span><span>14</span><span>15</span><span>16</span><span class="today">17</span><span>18</span><span>19</span>
+            </div>
+        </div>
+
+        <!-- Assignments -->
+        <div class="card">
+            <h4>📌 Assignments</h4>
+            <div class="assignment in-progress">Methods of Data – In Progress</div>
+            <div class="assignment completed">Market Research – Completed</div>
+            <div class="assignment upcoming">Data Collection – Upcoming</div>
+        </div>
+
+        <!-- NEW SECTION: News & Updates -->
+        <div class="card news-card">
+            <h4>📰 News & Updates</h4>
+            <ul>
+                <li><strong>New Course:</strong> Intro to AI starts next week.</li>
+                <li><strong>System Update:</strong> Dark mode now available.</li>
+                <li><strong>Reminder:</strong> Submit your assignments by Friday.</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="Port.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <h1>My Dashboard</h1>
+        <p>Welcome back! Here’s your activity overview.</p>
+    </header>
+
+    <main class="dashboard">
+    
+        <section class="card">
+            <h2>Profile Overview</h2>
+            <p>Name: John Doe</p>
+            <p>Role: Developer</p>
+            <p>Status: Active</p>
+        </section>
+
+
+        <section class="card large-card">
+            <h2>Hours Activity</h2>
+            <div class="chart-placeholder">[Chart Placeholder]</div>
+        </section>
+
+      
+        <section class="card large-card achievements">
+            <h2>Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement">
+                    <i class="fa-solid fa-trophy"></i>
+                    <h3>12</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="achievement">
+                    <i class="fa-solid fa-star"></i>
+                    <h3>8</h3>
+                    <p>Awards Won</p>
+                </div>
+                <div class="achievement">
+                    <i class="fa-solid fa-users"></i>
+                    <h3>150+</h3>
+                    <p>Clients Served</p>
+                </div>
+                <div class="achievement">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>500+</h3>
+                    <p>Commits</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card">
+            <h2>Recent Updates</h2>
+            <ul>
+                <li>Launched new feature for app</li>
+                <li>Attended team meeting</li>
+                <li>Completed bug fixes</li>
+            </ul>
+        </section>
+    </main>
+
+</body>
+</html> -->
