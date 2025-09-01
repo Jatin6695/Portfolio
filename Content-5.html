@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Rotating Cube Gallery</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  font-family: 'Poppins', sans-serif;
+  overflow:hidden;
+}
+
+.scene {
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube 10s infinite linear;
+}
+
+.cube div {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+.cube .front  { transform: rotateY(0deg) translateZ(125px); background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'); }
+.cube .back   { transform: rotateY(180deg) translateZ(125px); background-image: url('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'); }
+.cube .right  { transform: rotateY(90deg) translateZ(125px); background-image: url('https://images.unsplash.com/photo-1617196030675-99b2e5e3f4d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'); }
+.cube .left   { transform: rotateY(-90deg) translateZ(125px); background-image: url('https://images.unsplash.com/photo-1598514983626-5e1f12c5f7b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'); }
+.cube .top    { transform: rotateX(90deg) translateZ(125px); background-image: url('https://images.unsplash.com/photo-1543779500-53f45c23b051?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'); }
+.cube .bottom { transform: rotateX(-90deg) translateZ(125px); background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'); }
+
+@keyframes rotateCube {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* Hover effect */
+.cube:hover {
+  animation-play-state: paused;
+  transform: rotateX(10deg) rotateY(-10deg) scale(1.1);
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="scene">
+  <div class="cube">
+    <div class="front"></div>
+    <div class="back"></div>
+    <div class="right"></div>
+    <div class="left"></div>
+    <div class="top"></div>
+    <div class="bottom"></div>
+  </div>
+</div>
+
+</body>
+</html>

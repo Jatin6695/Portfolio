@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certifications</title>
+  <style>
+
+
+    :root{
+      --bg1:#0f1020;
+      --bg2:#191b34;
+      --accent:#21d4fd;
+      --accent2:#b721ff;
+      --gold:#ffd166;
+      --card:rgba(255,255,255,.08);
+      --stroke:rgba(255,255,255,.16);
+      --text:#eef1ff;
+      --muted:#b9c0ff;
+    }
+
+    
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0b1330;
+      color: #fff;
+    }
+
+    /* Scoped global styles inside .page-wrap */
+    .page-wrap *{box-sizing:border-box}
+    .page-wrap{
+      margin:0;
+      font-family:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:radial-gradient(1200px 600px at 80% 0%,#1a1b36 0%, transparent 60%),
+                 radial-gradient(800px 400px at 0% 100%,#141630 0%, transparent 60%),
+                 linear-gradient(180deg,var(--bg1),var(--bg2));
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:24px;
+    }
+
+    /* wrapper */
+    .wrapper-all{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    /* --- Banner --- */
+    .banner-new{
+      width:min(1200px,100%);
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      background:linear-gradient(135deg, rgba(33,212,253,.18), rgba(183,33,255,.18));
+      outline:1px solid var(--stroke);
+      backdrop-filter: blur(8px);
+      box-shadow:0 20px 60px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
+      isolation:isolate;
+      margin-bottom: 80px;
+    }
+
+    .grid-new{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:24px;
+      align-items:center;
+      padding: clamp(24px, 4vw, 48px);
+    }
+
+    /* --- Left (text) --- */
+    .eyebrow-new{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      outline:1px solid var(--stroke);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:12px;
+      color:var(--muted);
+      user-select:none;
+      backdrop-filter: blur(6px);
+    }
+    .spark-new{width:6px;height:6px;border-radius:50%;background:var(--gold); box-shadow:0 0 12px var(--gold);}
+
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(36px, 6vw, 64px);
+      line-height:1.05;
+      font-weight:800;
+      letter-spacing:-.02em;
+      text-shadow:0 8px 40px rgba(0,0,0,.45);
+    }
+    .grad-new{
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    p{margin:0 0 22px; color:var(--muted); font-size: clamp(14px, 1.6vw, 18px);}
+
+    .cta-new{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:14px 18px; border-radius:16px; font-weight:600; text-decoration:none; color:#0b0c1c;
+      background:linear-gradient(180deg,#ffffff,#e9ecff);
+      box-shadow:0 10px 30px rgba(33,212,253,.25);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .cta-new:hover{transform:translateY(-2px); box-shadow:0 18px 40px rgba(183,33,255,.28)}
+
+    /* --- Right (image card) --- */
+    .card-new{
+      position:relative;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+      outline:1px solid var(--stroke);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), 0 8px 30px rgba(0,0,0,.35);
+      padding:20px; aspect-ratio: 4/5; display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .card-new::before{
+      content:""; position:absolute; inset:-40% -60% auto -60%; height:200%;
+      background:linear-gradient(120deg, transparent 0 40%, rgba(255,255,255,.22) 50%, transparent 60% 100%);
+      transform:rotate(8deg); animation: shine 6s linear infinite;
+      pointer-events:none;
+    }
+    @keyframes shine { to { transform: translateX(60%) rotate(8deg); } }
+
+    .img-wrap-new{
+      width: 88%; max-width: 420px; aspect-ratio: 3/4; position:relative;
+      border-radius: 24px; overflow:hidden; outline:1px solid var(--stroke);
+      box-shadow: 0 30px 60px rgba(0,0,0,.45), 0 0 0 8px rgba(33,212,253,.05);
+      animation: floatY 4.5s ease-in-out infinite;
+      background: radial-gradient(120px 120px at 70% 30%, rgba(255,209,102,.25), transparent 60%), rgba(10,12,25,.4);
+    }
+    @keyframes floatY { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-10px) } }
+
+    .img-wrap-new img{width:100%; height:100%; object-fit:contain; display:block; filter: drop-shadow(0 10px 24px rgba(0,0,0,.35));}
+
+    /* confetti */
+    .confetti-new{ position:absolute; inset:0; pointer-events:none; }
+    .confetti-new span{ position:absolute; width:6px; height:10px; border-radius:2px; opacity:.85; animation:pop 2.2s linear infinite; }
+    @keyframes pop{ 0%{ transform: translateY(-20px) rotate(0deg) } 100%{ transform: translateY(140%) rotate(360deg) } }
+
+    /* floating orbs */
+    .orb-new{ position:absolute; border-radius:50%; filter: blur(40px); opacity:.55; mix-blend-mode: screen; }
+    .orb-new.cyan-new{ background:radial-gradient(var(--accent), transparent 60%); }
+    .orb-new.purple-new{ background:radial-gradient(var(--accent2), transparent 60%); }
+    .orb-new.gold-new{ background:radial-gradient(var(--gold), transparent 60%); }
+    .o1-new{ width:280px; height:280px; left:-60px; top:-60px; animation: drift 10s ease-in-out infinite; }
+    .o2-new{ width:220px; height:220px; right:-40px; bottom:-40px; animation: drift 12s ease-in-out infinite reverse; }
+    .o3-new{ width:140px; height:140px; right:20%; top:-30px; animation: drift 9s ease-in-out infinite; }
+    @keyframes drift{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(12px) } }
+
+    /* ribbon badge */
+    .ribbon-new{
+      position:absolute; left:18px; top:18px; z-index:3;
+      display:inline-flex; align-items:center; gap:8px;
+      background:linear-gradient(90deg, var(--gold), #ffe8a6);
+      color:#2b1d04; font-weight:700; padding:8px 12px; border-radius:14px;
+      box-shadow:0 8px 20px rgba(255,209,102,.35);
+    }
+    .ribbon-new::after{ content:""; width:0; height:0; border-left:8px solid #d7aa3c; border-top:10px solid transparent; border-bottom:10px solid transparent; margin-left:6px; }
+
+    /* responsive */
+    @media (max-width: 900px){
+      .grid-new{ grid-template-columns: 1fr; }
+      .img-wrap-new{ width: 78%; margin-inline:auto; }
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      position: relative;
+      text-align: center;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #f5a623;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .cert-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+.cert-card {
+      background: #111a3b;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+
+.cert-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+
+.cert-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+
+    .crt-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+
+.crt-card {
+      background: #111a3b;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+       width: 70%;
+       margin-left: 40px;
+    }
+
+.crt-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+.crt-card img {
+      width: 90%;
+      height: 280px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+
+     .crt-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #f5a623;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    
+
+.cer-container {
+      margin-left: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+.cer-card {
+      background: #111a3b;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+       width: 60%;
+    }
+
+.cer-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+.cer-card img {
+      width: 90%;
+      height: 280px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+      .cer-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #f5a623;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+
+
+.crd-container {
+      margin-left: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+.crd-card {
+      background: #111a3b;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+       width: 30%;
+    }
+
+.crd-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+.crd-card img {
+      width: 80%;
+      height: 300px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+.crd-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #f5a623;
+      margin: 0;
+      text-transform: uppercase;
+}
+
+
+.design img{
+   height: 240px;
+}
+
+.design-card img{
+   height: 240px;
+   width: 200px;
+}
+
+    .cert-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #f5a623;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+
+   
+footer {
+  margin-top: 150px;
+  width: 97.3%;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  position: relative;
+  background: linear-gradient(135deg, #ff8c42, #ff3c88, #8a4fff);
+  padding: 80px 20px 40px; /* equal spacing from top */
+  overflow: hidden;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  margin-bottom: -60px;
+}
+
+/* wrapper inside footer */
+.foot-wrap {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* profile box */
+.foot-profile {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  flex: 1 1 250px;
+}
+
+.foot-profile img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid white;
+  margin-bottom: 10px;
+}
+
+.foot-info h2 {
+  margin: 5px 0;
+  font-size: 22px;
+  color: white;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.foot-info p {
+  font-size: 14px;
+  color: #ddd;
+  font-weight: 400;
+}
+
+/* social icons */
+.foot-social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.foot-social a {
+  width: 40px;
+  height: 40px;
+  background: white;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 18px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.foot-social a:hover {
+  transform: translateY(-5px) scale(1.1);
+  background: linear-gradient(45deg, #ff8c42, #ff3c88);
+  color: white;
+}
+
+/* links section */
+.foot-links {
+  flex: 1 1 200px;
+  text-align: center;
+}
+
+.foot-links h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  background: linear-gradient(45deg, #ffd642, #ff8c42);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.foot-links a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 6px 0;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.foot-links a:hover {
+  background: linear-gradient(45deg, #ff8c42, #ff3c88);
+  border-color: transparent;
+  transform: scale(1.05);
+}
+
+/* footer bottom note */
+.foot-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 12px;
+  color: #ccc;
+  font-weight: 400;
+}   
+
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="wrapper-all">
+    <section class="banner-new">
+
+      <!-- softly glowing orbs -->
+      <div class="orb-new cyan-new o1-new"></div>
+      <div class="orb-new purple-new o2-new"></div>
+      <div class="orb-new gold-new o3-new"></div>
+
+      <div class="grid-new">
+        <!-- Left: Text -->
+        <div>
+          <div class="eyebrow-new"><span class="spark-new"></span> Official Achievement</div>
+          <h1><span class="grad-new">Certificate</span> of Technical Skills</h1>
+          <p>Showcase progress with confidence. A certificate that validates your hard work and commitment to learning, highlighting growth and achievement with pride</p>
+        </div>
+
+        <!-- Right: Image card -->
+        <div class="card-new">
+          <div class="ribbon-new">Verified</div>
+          <div class="img-wrap-new">
+            <img src="Images/Certification-1.png" alt="Boy holding certificate" />
+          </div>
+          <div class="confetti-new" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const c = document.querySelector('.confetti-new');
+    const colors = ['#21d4fd','#b721ff','#ffd166','#4df8e8','#ff8cc9'];
+    for(let i=0;i<32;i++){
+      const s = document.createElement('span');
+      s.style.left = Math.random()*100 + '%';
+      s.style.top = Math.random()*40 + '%';
+      s.style.background = colors[Math.floor(Math.random()*colors.length)];
+      s.style.animationDelay = (Math.random()*1.5).toFixed(2)+'s';
+      s.style.animationDuration = (1.8 + Math.random()*1.2).toFixed(2)+'s';
+      s.style.transform = 'rotate('+(Math.random()*360).toFixed(0)+'deg)';
+      c.appendChild(s);
+    }
+  })();
+</script>
+
+
+  
+  <!-- Full Stack Developer Section -->
+  <section>
+
+    <h2>Full Stack Developer</h2>
+    <div class="cert-container">
+      <div class="cert-card">
+        <img src="Images/Certificate-1.png" alt="Full Stack Certificate 1">
+        <h3>FULL Stack Developer</h3>
+      </div>
+
+      <div class="cert-card">
+        <img src="Images/Certificate-2.png" alt="Full Stack Certificate 2">
+        <h3>Frontend Developer</h3>
+      </div>
+
+      <div class="cert-card">
+        <img src="Images/Certificate-3.png" alt="Full Stack Certificate 3">
+        <h3>Javascript</h3>
+      </div>
+
+      <div class="cert-card">
+        <div class="design">
+        <img src="Images/Cerificate-node-1.png" alt="Full Stack Certificate 4">
+        <h3>Node.js Backend</h3>
+      </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="Images/Certificate-4.png" alt="Full Stack Certificate 4"   >
+        <h3>Accenture Web-Skills</h3>
+      </div>
+  </section>
+
+  <!-- Software Development Section -->
+  <section>
+    <h2>Software Development</h2>
+    <div class="crt-container">
+      <div class="crt-card">
+        <img src="Images/Certificate-Infosys.png" alt="Software Certificate 1">
+        <h3>Infosys Java Springboard</h3>
+      </div>
+      <div class="crt-card">
+        <img src="Images/Java-1.png" alt="Software Certificate 2">
+        <h3>Simplilearn Java</h3>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Database Management Section -->
+  <section>
+    <h2>Database Management</h2>
+    <div class="cer-container">
+      <div class="cer-card">
+        <img src="Images/Oracle-1.png" alt="Database Certificate 1">
+        <h3>Oracle Develper</h3>
+      </div>
+
+      <div class="cer-card">
+        <img src="Images/Oracle-2.png" alt="Database Certificate 2">
+        <h3>Oracle Dbms</h3>
+      </div>
+    </div>
+  </section>
+
+  
+
+
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="crd-container">
+      <div class="crd-card">
+        <img src="Images/Tcs-certificate.png" alt="Database Certificate 1">
+        <h3>Tcs Communication</h3>
+      </div>
+    </div>
+  </section>
+
+
+
+  
+  <footer>
+  <div class="foot-wrap">
+     
+    <div class="foot-profile">
+      <img src="Images/Icon.png" alt="Profile">
+      <div class="foot-info">
+        <h2>Jatin</h2>
+        <p>Full Stack Developer</p>
+      </div>
+      <div class="foot-social">
+        <a href="#">🌐</a>
+        <a href="#">💼</a>
+        <a href="#">📧</a>
+      </div>
+    </div>
+
+    <div class="foot-links">
+      <h3>Quick Links</h3>
+      <a href="index.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="Projects.html">Projects</a>
+      <a href="Certificate-1.html">Certification</a>
+    </div>
+
+    <div class="foot-links">
+      <h3>Contact</h3>
+      <a href="#">📍 Punjab, India</a>
+      <a href="#">📞 +1 234 567 890</a>
+      <a href="#">✉️ Jatin123@gmail.com</a>
+    </div>
+
+  </div>
+
+  <div class="foot-bottom">
+    © 2025 Jatin. All Rights Reserved.
+  </div>
+</footer>
+
+
+
+
+
+</body>
+</html>

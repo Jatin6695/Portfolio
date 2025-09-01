@@ -1,0 +1,465 @@
+<!doctype html> 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1: #0f172a;
+      --bg2: #0b1330;
+      --accent1: #7c5cff;
+      --accent2: #ff5c7c;
+      --accent3: #21d4fd;
+      --accent4: #f6d365;
+      --text-solid: #ffffff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, sans-serif;
+      background: linear-gradient(135deg,var(--bg1), var(--bg2));
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      color:white;
+      padding:40px 20px;
+    }
+
+    /* banner */
+    .banner{
+      width:100%;
+      max-width:1100px;
+      height:350px;
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,0.04);
+      box-shadow:0 8px 32px rgba(0,0,0,0.4);
+      margin-bottom:50px;
+    }
+    .shape{position:absolute;opacity:0.65;pointer-events:none;filter: blur(4px);mix-blend-mode: screen;}
+    .circle{width:180px;height:180px;border-radius:50%;background: radial-gradient(circle,var(--accent1),transparent);top:30%;left:20%;animation: moveCircle 7s ease-in-out infinite alternate;}
+    .rhombus{width:170px;height:170px;background: linear-gradient(135deg,var(--accent2),transparent);top:50%;left:70%;transform:translate(-50%,-50%) rotate(45deg);animation: moveRhombus 8s ease-in-out infinite alternate;}
+    .circle2{width:120px;height:120px;border-radius:50%;background: radial-gradient(circle,var(--accent3),transparent);bottom:15%;left:40%;animation: moveCircle2 9s ease-in-out infinite alternate;}
+    .rect{width:200px;height:120px;background: linear-gradient(90deg,var(--accent4),transparent);top:15%;right:10%;border-radius:14px;animation: floatRect 10s ease-in-out infinite alternate;}
+    @keyframes moveCircle{0%{transform:translate(-50%,-50%) translateX(-80px)}50%{transform:translate(-50%,-50%) translateX(80px)}100%{transform:translate(-50%,-50%) translateX(-80px)}}
+    @keyframes moveRhombus{0%{transform:translate(-50%,-50%) rotate(45deg) translateX(100px)}50%{transform:translate(-50%,-50%) rotate(45deg) translateX(-100px)}100%{transform:translate(-50%,-50%) rotate(45deg) translateX(100px)}}
+    @keyframes moveCircle2{0%{transform:translateY(0)}50%{transform:translateY(-60px)}100%{transform:translateY(0)}}
+    @keyframes floatRect{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-30px) rotate(10deg)}100%{transform:translateY(0) rotate(0)}}
+
+    h1{position:relative;z-index:2;font-size:clamp(44px,6vw,72px);font-weight:800;margin:0;text-transform:uppercase;animation: fadeIn 1.2s ease-out both;text-shadow: 0 0 14px rgba(255,255,255,0.4);}
+    h1.gradient{background: linear-gradient(90deg,var(--accent1),var(--accent2),var(--accent3),var(--accent4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    @keyframes fadeIn{from{opacity:0; transform:translateY(20px)}to{opacity:1; transform:translateY(0)}}
+
+    /* project cards grid */
+    .projects{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap:80px;
+      width:100%;
+      max-width:1200px;
+      margin-top:100px; /* 🔥 Added extra space above */
+    }
+    .project-card{
+      position:relative;
+      border-radius:20px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.05);
+      box-shadow:0 8px 20px rgba(0,0,0,0.4);
+      transition:transform .4s ease, box-shadow .4s ease;
+      cursor:pointer;
+    }
+    .project-card:hover{
+      transform:translateY(-12px) scale(1.05) rotateX(4deg) rotateY(-4deg);
+      box-shadow:0 16px 40px rgba(0,0,0,0.6);
+    }
+    .project-card img{
+      width:100%;
+      height:auto;
+      display:block;
+      transition:transform .6s ease, filter .6s ease;
+    }
+    .project-card:hover img{
+      transform:scale(1.15) rotate(-1deg);
+      filter:brightness(0.75) blur(2px);
+    }
+
+    /* overlay */
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,0.15),rgba(0,0,0,0.85));
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:20px;
+      opacity:0;
+      transition:opacity .5s ease, background .6s ease;
+    }
+    .project-card:hover .overlay{
+      opacity:1;
+      background:linear-gradient(180deg,rgba(20,20,40,0.3),rgba(0,0,0,0.95));
+    }
+    .overlay .project-title{
+      font-size:22px;
+      font-weight:800;
+      margin:0 0 8px;
+      background: linear-gradient(90deg,#ff5c7c,#ff3366,#f6d365,#21d4fd);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      transform:translateY(20px);
+      opacity:0;
+      transition:all .5s ease;
+    }
+    .overlay .tech-stack,
+    .overlay .btn{
+      transform:translateY(20px);
+      opacity:0;
+      transition:all .5s ease;
+    }
+    .project-card:hover .overlay .project-title,
+    .project-card:hover .overlay .tech-stack,
+    .project-card:hover .overlay .btn{
+      transform:translateY(0);
+      opacity:1;
+    }
+    .overlay .tech-stack{
+      font-size:14px;
+      color:#a0f3ff;
+      margin-bottom:12px;
+      text-shadow:0 0 6px rgba(0,255,255,0.5);
+    }
+    .btn{
+      display:inline-block;
+      padding:10px 18px;
+      border-radius:8px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:white;
+      font-weight:600;
+      text-decoration:none;
+      transition:background .3s ease, transform .3s ease, box-shadow .3s ease;
+    }
+    .btn:hover{
+      background:linear-gradient(90deg,var(--accent3),var(--accent4));
+      transform:scale(1.08) translateY(-2px);
+      box-shadow:0 0 14px rgba(255,255,255,0.6);
+    }
+
+    /* glowing border */
+    .project-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:20px;
+      padding:2px;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2),var(--accent3),var(--accent4));
+      -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite:xor;
+      mask-composite:exclude;
+      opacity:0;
+      transition:opacity .4s ease;
+    }
+    .project-card:hover::before{opacity:1;}
+
+    /* floating shapes under card */
+    .decor{
+      position:absolute;
+      bottom:10px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:12px;
+      opacity:0.8;
+    }
+    .decor span{
+      width:14px;height:14px;
+      border-radius:50%;
+      background:var(--accent3);
+      animation: pulse 3s infinite ease-in-out;
+    }
+    .decor span:nth-child(2){background:var(--accent2);animation-delay:1s;}
+    .decor span:nth-child(3){background:var(--accent4);clip-path:polygon(50% 0, 0 100%, 100% 100%);border-radius:0;animation-delay:2s;}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+
+
+
+    
+
+footer {
+  margin-top: 150px;
+  width: 102.5%;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  position: relative;
+  background: linear-gradient(135deg, #ff8c42, #ff3c88, #8a4fff);
+  padding: 80px 20px 40px; /* equal spacing from top */
+  overflow: hidden;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  margin-bottom: -60px;
+}
+
+/* wrapper inside footer */
+.foot-wrap {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* profile box */
+.foot-profile {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  flex: 1 1 250px;
+}
+
+.foot-profile img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid white;
+  margin-bottom: 10px;
+}
+
+.foot-info h2 {
+  margin: 5px 0;
+  font-size: 22px;
+  color: white;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.foot-info p {
+  font-size: 14px;
+  color: #ddd;
+  font-weight: 400;
+}
+
+/* social icons */
+.foot-social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.foot-social a {
+  width: 40px;
+  height: 40px;
+  background: white;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 18px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.foot-social a:hover {
+  transform: translateY(-5px) scale(1.1);
+  background: linear-gradient(45deg, #ff8c42, #ff3c88);
+  color: white;
+}
+
+/* links section */
+.foot-links {
+  flex: 1 1 200px;
+  text-align: center;
+}
+
+.foot-links h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  background: linear-gradient(45deg, #ffd642, #ff8c42);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.foot-links a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 6px 0;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.foot-links a:hover {
+  background: linear-gradient(45deg, #ff8c42, #ff3c88);
+  border-color: transparent;
+  transform: scale(1.05);
+}
+
+/* footer bottom note */
+.foot-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 12px;
+  color: #ccc;
+  font-weight: 400;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <section class="banner">
+    <div class="shape circle"></div>
+    <div class="shape rhombus"></div>
+    <div class="shape circle2"></div>
+    <div class="shape rect"></div>
+    <h1 class="gradient">Our Content</h1>
+  </section>
+
+  <section class="projects">
+    <!-- Repeat 8 cards -->
+    <div class="project-card">
+      <img src="Images/Img-1.png" alt="">
+      <div class="overlay">
+        <h3 class="project-title">Admin DashBoard</h3>
+        <p class="tech-stack">React · Node.js · Html css</p>
+        <a href="Port.html" class="btn">Explore Project</a>
+      </div>
+      <div class="decor"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="Images/Img-2.png" alt="">
+      <div class="overlay">
+        <h3 class="project-title">Shopping Cart</h3>
+        <p class="tech-stack">Express.js · MongoDB · Html css</p>
+        <a href="content-2.html" class="btn">Explore Project</a>
+      </div>
+      <div class="decor"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="Images/Img-3.png" alt="">
+      <div class="overlay">
+        <h3 class="project-title">Creative Design</h3>
+        <p class="tech-stack">Node.js ·React js · Tailwind Css</p>
+        <a href="Content-1.html" class="btn">Explore Project</a>
+      </div>
+      <div class="decor"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="Images/Img-4.png" alt="">
+      <div class="overlay">
+        <h3 class="project-title">Graph & Chart </h3>
+        <p class="tech-stack">React · Tailwind CSS</p>
+        <a href="Web-1.html" class="btn">Explore Project</a>
+      </div>
+      <div class="decor"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="Images/Img-5.png" alt="">
+      <div class="overlay">
+        <h3 class="project-title">Portfolio Website</h3>
+        <p class="tech-stack">HTML · CSS · JavaScript</p>
+        <a href="From.html" class="btn">Explore Project</a>
+      </div>
+      <div class="decor"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="Images/Img-6.png" alt="">
+      <div class="overlay">
+        <h3 class="project-title">Animation Design</h3>
+        <p class="tech-stack">React · Tailwind CSS · JavaScript</p>
+        <a href="Cont-b.html" class="btn">Explore Project</a>
+      </div>
+      <div class="decor"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="Images/Img-7.png" alt="">
+      <div class="overlay">
+        <h3 class="project-title">Analysis Graph</h3>
+        <p class="tech-stack">React · Tailwind CSS</p>
+        <a href="Anim.html" class="btn">Explore Project</a>
+      </div>
+      <div class="decor"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="project-card">
+      <img src="Images/Img-8.png" alt="">
+      <div class="overlay">
+        <h3 class="project-title">Book Store Design</h3>
+        <p class="tech-stack">HTML · CSS · JavaScript</p>
+        <a href="Website.html" class="btn">Explore Project</a>
+      </div>
+      <div class="decor"><span></span><span></span><span></span></div>
+    </div>
+  </section>
+
+
+  
+<footer>
+  <div class="foot-wrap">
+     
+    <div class="foot-profile">
+      <img src="Images/Icon.png" alt="Profile">
+      <div class="foot-info">
+        <h2>Jatin</h2>
+        <p>Full Stack Developer</p>
+      </div>
+      <div class="foot-social">
+        <a href="#">🌐</a>
+        <a href="#">💼</a>
+        <a href="#">📧</a>
+      </div>
+    </div>
+
+    <div class="foot-links">
+      <h3>Quick Links</h3>
+      <a href="index.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="Projects.html">Projects</a>
+      <a href="Certificate-1.html">Certification</a>
+    </div>
+
+    <div class="foot-links">
+      <h3>Contact</h3>
+      <a href="#">📍 Punjab, India</a>
+      <a href="#">📞 +1 234 567 890</a>
+      <a href="#">✉️ Jatin123@gmail.com</a>
+    </div>
+
+  </div>
+
+  <div class="foot-bottom">
+    © 2025 Jatin. All Rights Reserved.
+  </div>
+</footer>
+
+
+
+</body>
+</html>

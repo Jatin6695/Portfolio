@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechVision</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0b1226;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+    }
+
+    header .logo {
+      font-size: 26px;
+      font-weight: 800;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(90deg, #ff2e6e, #ff9aff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px #ff2e6e, 0 0 30px #ff5c8d;
+    }
+
+    header nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #ddd;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: #ff5c8d;
+      text-shadow: 0 0 10px #ff2e6e;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 10%;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-text h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 50px;
+      line-height: 1.2;
+      background: linear-gradient(270deg, #ff2e6e, #ff9aff, #8f5fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px #ff2e6e, 0 0 30px #ff5c8d;
+      background-size: 400% 400%;
+      animation: gradientMove 6s infinite linear;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-text p {
+      margin: 20px 0;
+      color: #ccc;
+      font-size: 16px;
+      max-width: 400px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      background: linear-gradient(90deg, #ff2e6e, #ff9aff);
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 0 20px #ff2e6e;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #ff2e6e;
+    }
+
+    /* TV Shape */
+    .tv {
+      width: 420px;
+      height: 260px;
+      background: #111;
+      border-radius: 15px;
+      border: 10px solid #333;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: tvGlow 3s infinite alternate;
+    }
+
+    @keyframes tvGlow {
+      0% { box-shadow: 0 0 20px rgba(255, 46, 110, 0.4); }
+      100% { box-shadow: 0 0 50px rgba(255, 46, 110, 0.9); }
+    }
+
+    .tv::after {
+      content: "";
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 20px;
+      background: #222;
+      border-radius: 10px;
+    }
+
+    .tv-content {
+      width: 90%;
+      height: 80%;
+      background: url('https://images.unsplash.com/photo-1606813908859-d171f07fbee3?auto=format&fit=crop&w=800&q=80') no-repeat center/cover;
+      border-radius: 8px;
+      box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+      animation: flicker 4s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.7;
+      }
+    }
+
+    /* Extra bottom content */
+    .bottom {
+      text-align: center;
+      padding: 50px 20px;
+      background: #10162e;
+    }
+
+    .bottom h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #ff2e6e, #ff9aff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px #ff2e6e;
+      animation: gradientMove 6s infinite linear;
+    }
+
+    .bottom p {
+      color: #bbb;
+      max-width: 600px;
+      margin: auto;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">TechVision</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Innovative Solutions</h1>
+      <p>Experience the future of technology with our advanced and stylish products. Designed to inspire, built to perform.</p>
+      <button class="btn">Explore More</button>
+    </div>
+    <div class="tv">
+      <div class="tv-content"></div>
+    </div>
+  </section>
+
+  <section class="bottom">
+    <h2>Why Choose Us?</h2>
+    <p>We deliver premium quality tech products that blend style and functionality. With futuristic designs, advanced features, and unmatched durability, we bring you the innovation of tomorrow, today.</p>
+  </section>
+</body>
+</html>

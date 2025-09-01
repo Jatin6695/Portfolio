@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Education Section</title>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(180deg, #0f172a, #0b1330);
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .education-section {
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .education-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        background: linear-gradient(90deg, #21d4fd, #b721ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .education-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        position: relative;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    /* Timeline line */
+    .education-container::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .edu-box {
+        width: 45%;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+        position: relative;
+    }
+
+    .edu-box:hover {
+        transform: scale(1.05);
+    }
+
+    .edu-year {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #21d4fd;
+        margin-bottom: 12px;
+    }
+
+    .edu-degree {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        background: linear-gradient(90deg, #21d4fd, #b721ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .edu-university {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+
+    /* Left box */
+    .edu-box.left {
+        align-self: flex-start;
+    }
+
+    /* Right box */
+    .edu-box.right {
+        align-self: flex-end;
+    }
+
+    /* Connector dots */
+    .edu-box::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        width: 18px;
+        height: 18px;
+        background: #21d4fd;
+        border-radius: 50%;
+        border: 3px solid #0f172a;
+    }
+
+    .edu-box.left::before {
+        right: -40px;
+    }
+
+    .edu-box.right::before {
+        left: -40px;
+    }
+
+    @media (max-width: 768px) {
+        .education-container::before {
+            left: 20px;
+        }
+        .edu-box {
+            width: 100%;
+            align-self: flex-start !important;
+            padding-left: 50px;
+        }
+        .edu-box::before {
+            left: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<section class="education-section">
+    <h2>Education</h2>
+    <div class="education-container">
+        <div class="edu-box left">
+            <div class="edu-year">2020 – 2023</div>
+            <div class="edu-degree">BCA</div>
+            <div class="edu-university">Chitkara University</div>
+        </div>
+
+        <div class="edu-box right">
+            <div class="edu-year">2023 – 2025</div>
+            <div class="edu-degree">MCA</div>
+            <div class="edu-university">Chitkara University</div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
